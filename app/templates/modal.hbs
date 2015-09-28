@@ -1,6 +1,28 @@
  {{#modal-dialog action="close"}}
-      <h3 class="flush--top">Name Change Modal</h3>
-      <p>Enter a new name:</p>
-      <p>{{input value=name}}</p>
-      <button {{action "close"}}>Done</button>
+    <h3 class="flush--top">Required list of artist data</h3>
+{{#if model.body.album_list}}
+<ul class="properties">
+   {{#each parent in model.body.album_list}}
+ <li>{{parent.album.album_release_date}}<br>
+{{parent.album.album_name}}</li>
+<br>
+TRACK COUNT:   {{parent.album.album_track_count}} 
+<br><br>
+ {{/each}}
+</ul>
+{{else}}
+<ul class="properties">
+<li>Artist Name:   {{model.body.artist.artist_name}}<br>
+</li>
+ <li>Artist rating:   {{model.body.artist.artist_rating}}<br>
+</li>
+<li>Artist Country:   {{model.body.artist.artist_country}}<br>
+</li>
+<li>Artist Twitter URL:   {{model.body.artist.artist_twitter_url}}<br>
+</li>
+<li>Updated time:   {{model.body.artist.updated_time}}<br>
+</li>
+</ul>
+{{/if}}
+<button {{action "close"}}>Done</button>
     {{/modal-dialog}}

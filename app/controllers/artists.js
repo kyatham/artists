@@ -3,7 +3,7 @@ export default Ember.ObjectController.extend({
   actions: {
     getArtists: function() {
       // Get the list of artists
-var result = Ember.ObjectProxy.create({content: []});
+result = Ember.ObjectProxy.create({content: []});
       $.ajax({
            url: 'http://api.musixmatch.com/ws/1.1/artist.get',
            type: 'GET',
@@ -18,9 +18,7 @@ var result = Ember.ObjectProxy.create({content: []});
 "jsonpCallback": 'getArtistsData',           
 success: function(data) {
              result.set('content', data);
-console.log(data.message);              
-this.store.pushPayload('artist',postsJSON);
-return data;
+console.log(result.content);              
            },
            error: function() {
                console.log('DEBUG: GET Artists Failed');
@@ -43,8 +41,9 @@ var result = Ember.ObjectProxy.create({content: []});
                 },
 "jsonpCallback": 'getAlbumsData',
 success: function(data) {
-             result.set('content', data);
+            // this.store.find("artist").save();
 console.log(data);
+//console.log(result);
 return data;
            },
            error: function() {

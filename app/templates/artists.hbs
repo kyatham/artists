@@ -1,19 +1,19 @@
 <cript type="text/javascript" src="https://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP" />
 <p>
-Hello World!
+Hello World! I am using one of my favorite artists, COLDPLAY, for making the API calls to get the required info.<br>
+ 
 </p>
 <div class='artist-select row'>
-        <div class='artistContainer col-md-6'>
-<button id="load-artists" {{action "getArtists" 'openModal' 'modal'}}>
-    Load Artists
-  </button>
-        </div>
 <div class="col-md-6">
-<button id="load-albums" {{action "getAlbums" 'openModal' 'modal'}}>
-    Load Albums
+<button id="load-albums" {{action 'openModal' 'modal' 'artist.get' }}>
+    Load Artists Info
   </button>
 </div>
+<br>
+<br>
+<div class="col-md-6">
+<button {{action 'openModal' 'modal' 'artist.albums.get'}}>Load Albums</button>
 </div>
-<button {{action 'openModal' 'modal'}}>Change Name</button>
+</div>
 {{outlet}}
 {{outlet  'modal'}}
